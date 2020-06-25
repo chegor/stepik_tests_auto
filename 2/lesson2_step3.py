@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.support.ui import Select
 
 try:
-    link = 'http://suninjuly.github.io/selects1.html'
+    link = 'http://suninjuly.github.io/selects2.html'
     browser = webdriver.Chrome()
     browser.get(link)
 
