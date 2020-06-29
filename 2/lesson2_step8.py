@@ -28,8 +28,6 @@ try:
     submit.click()
 
 
-
-
 finally:
     time.sleep(5)
     browser.quit()
