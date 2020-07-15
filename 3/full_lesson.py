@@ -3,6 +3,8 @@ from selenium import webdriver
 import time
 import math
 
+final = ''
+
 list_of_urls = [
     "https://stepik.org/lesson/236895/step/1",
     "https://stepik.org/lesson/236896/step/1",
@@ -22,6 +24,7 @@ def browser():
     yield browser
     print("\nquit browser..")
     browser.quit()
+    #print(final)
 
 
 @pytest.mark.parametrize('url', list_of_urls)
@@ -35,5 +38,9 @@ class TestUrls:
         button.click()
         feedback = browser.find_element_by_css_selector('.smart-hints__hint')
         feedback_text = feedback.text
-        assert feedback_text == 'Correct!', "WRONG TEXT: " + feedback_text
+        try:
+            assert feedback_text == 'Correct!', "WRONG TEXT: " + feedback_text
+        except AssertionError:
+            final += feedback_text
+            #To print final - change scope in fixture to "session" and uncomment print
 
